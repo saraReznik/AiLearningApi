@@ -1,0 +1,32 @@
+# General
+.vs/
+
+# Node.js / Frontend
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .NET / Backend
+backend/bin/
+backend/obj/
+*.suo
+*.user
+*.userosscache
+*.csproj.user
+
+# Rider files
+.idea/
+# Dependencies for Frontend
+ai-learning-frontend-new/node_modules
+
+# Build outputs for Frontend
+ai-learning-frontend-new/dist
+
+# Environment variables for Frontend
+ai-learning-frontend-new/.env
+ai-learning-frontend-new/.env.local
+ai-learning-frontend-new/.env.*.local
