@@ -1,0 +1,38 @@
+# General
+.vs/
+
+# Node.js / Frontend
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .NET / Backend
+backend/bin/
+backend/obj/
+*.suo
+*.user
+*.userosscache
+*.csproj.user
+
+# Rider files
+.idea/
+# C#/.NET project build outputs
+[Bb]in/
+[Oo]bj/
+
+# User-specific files & settings
+*.suo
+*.user
+*.userosscache
+*.csproj.user
+
+# Rider files
+.idea/
+
+# Secrets - VERY IMPORTANT to ignore
+*.txt
+appsettings.Development.json
