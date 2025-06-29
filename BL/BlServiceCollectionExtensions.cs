@@ -1,5 +1,4 @@
-﻿// filepath: BL/BlServiceCollectionExtensions.cs
-
+﻿
 using BL.Api;
 using BL.Services;
 using Microsoft.Extensions.DependencyInjection;

@@ -27,9 +27,7 @@ namespace Server.Controllers
                 return BadRequest("User object is null");
             }
 
-            _userService.Create(user); // קוראים לפונקציה שלא מחזירה ערך
-
-            // מחזירים את האובייקט המקורי שנשלח, שאמור להכיל עכשיו את כל הפרטים
+            _userService.Create(user); 
             return Ok(user);
         }
 
@@ -49,9 +47,8 @@ namespace Server.Controllers
                 return BadRequest("User cannot be null.");
             }
 
-            _userService.Update(user); // קוראים לפונקציה שלא מחזירה ערך
+            _userService.Update(user); 
 
-            // מחזירים את האובייקט המקורי כדי לאשר שהפעולה התבצעה
             return Ok(user);
         }
     }

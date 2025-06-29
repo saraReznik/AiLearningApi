@@ -10,11 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using BL.Exception; // ודא שה-using הזה קיים
+using BL.Exception; 
 
 namespace BL.Services;
 
-// [הוספה]: הוספנו את הגדרת הקלאס הזה שהיה חסר
 public class ValidatePromptRequest
 {
     public string UserPrompt { get; set; }
@@ -52,12 +51,11 @@ public class PromptHandling : IBLPrompt
         var aiResponse = await CallOpenAiApi(prompt.Prompt1);
 
         prompt.Response = aiResponse;
-        Create(prompt); // [תיקון]: קריאה לפונקציה סינכרונית
+        Create(prompt); 
 
         return aiResponse;
     }
 
-    // [תיקון]: הפכנו את הפונקציה ל-public כדי שתתאים לממשק IBLPrompt
     public async Task<string> CallOpenAiApi(string promptText)
     {
         var httpClient = _httpClientFactory.CreateClient();
@@ -80,9 +78,6 @@ public class PromptHandling : IBLPrompt
 
         return result?.choices?[0]?.message?.content ?? string.Empty;
     }
-
-    // [תיקון]: כל הפונקציות הבאות הותאמו לעבודה סינכרונית מול ה-DAL
-    // כדי לפתור את שגיאות הקומפילציה.
 
     public void Create(BLPrompt entity)
     {
@@ -126,7 +121,6 @@ public class PromptHandling : IBLPrompt
            .Select(p => ConvertToBl(p)).ToList();
     }
 
-    // --- פונקציות פרטיות ---
 
     private async Task<bool> ValidateRequestRelevance(BLPrompt prompt)
     {
@@ -156,7 +150,6 @@ public class PromptHandling : IBLPrompt
     {
         if (string.IsNullOrWhiteSpace(prompt.Prompt1))
             throw new ValidationException("הטקסט של הפנייה לא יכול להיות ריק.");
-        // ... שאר בדיקות הולידציה
     }
 
     private BLPrompt ConvertToBl(Prompt dalPrompt)

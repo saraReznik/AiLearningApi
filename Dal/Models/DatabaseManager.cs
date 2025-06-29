@@ -32,10 +32,10 @@ public partial class DatabaseManager : DbContext
 
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
-                .IsUnicode(true); // ✅ תמיכה בעברית
+                .IsUnicode(true);
 
             entity.Property(e => e.Description)
-                .HasColumnType("nvarchar(max)"); // ✅ תמיכה בעברית
+                .HasColumnType("nvarchar(max)"); 
         });
 
         modelBuilder.Entity<Prompt>(entity =>
@@ -70,7 +70,7 @@ public partial class DatabaseManager : DbContext
 
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
-                .IsUnicode(true); // ✅ תמיכה בעברית
+                .IsUnicode(true); 
 
             entity.HasOne(d => d.Category).WithMany(p => p.SubCategories)
                 .HasForeignKey(d => d.CategoryId)

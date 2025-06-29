@@ -3,8 +3,7 @@ using BL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic; // ודא שזה קיים
-
+using System.Collections.Generic; 
 namespace Server.Controllers
 {
     [Route("api/[controller]")]
@@ -18,27 +17,19 @@ namespace Server.Controllers
             _categoryServiec = BL.Category;
         }
 
-        // ==============================================================
-        //                      הפונקציה הנכונה
-        // ==============================================================
-        // נקודת הקצה הזו (GET /api/Category) היא זו שהפרונטאנד קורא לה.
-        // היא מחזירה רשימה של אובייקטים מלאים מסוג BLCategory.
-        // כל אובייקט מכיל גם ID וגם Name, וזה בדיוק מה שהפרונטאנד צריך.
         [HttpGet]
-        public ActionResult<IEnumerable<BLCategory>> GetAll() // שימוש ב-IEnumerable הוא מומלץ יותר
+        public ActionResult<IEnumerable<BLCategory>> GetAll() 
         {
             try
             {
                 var categories = _categoryServiec.GetAll();
-                return Ok(categories); // מחזירים את רשימת האובייקטים המלאה
+                return Ok(categories); 
             }
             catch (Exception ex)
             {
-                // אם יש בעיה, מחזירים שגיאת שרת 500
                 return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred: {ex.Message}");
             }
         }
-        // ==============================================================
 
 
         [HttpGet]

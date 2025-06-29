@@ -26,7 +26,6 @@ namespace Dal.Services
             _context.Categories.Add(entity);
             _context.SaveChanges();
 
-            // החזרת האובייקט עצמו — EF כבר יעדכן את ה־ID שלו
             return entity;
         }
 
@@ -47,14 +46,14 @@ namespace Dal.Services
         public IEnumerable<Category> GetAll()
         {
             return _context.Categories
-                .Include(c => c.SubCategories) // אם את רוצה לכלול תתי קטגוריות כבר כאן
+                .Include(c => c.SubCategories) 
                 .ToList();
         }
 
         public Category? Read(int id)
         {
             return _context.Categories
-                .Include(c => c.SubCategories) // לכלול גם תתי קטגוריות
+                .Include(c => c.SubCategories) 
                 .FirstOrDefault(c => c.CategoryId == id);
         }
 

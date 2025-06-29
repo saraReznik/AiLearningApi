@@ -112,22 +112,17 @@ namespace BL.Services
             }
         }
 
-        // =========================================================
-        //          הוספנו כאן את הפונקציה החסרה
-        // =========================================================
+
         public BLUser ReadByEmail(string email)
         {
-            // מחפשים את המשתמש בשכבת הנתונים לפי אימייל
             User userFromDal = _user.GetAll()
                 .FirstOrDefault(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
 
-            // אם המשתמש לא נמצא, מחזירים null
             if (userFromDal == null)
             {
                 return null;
             }
 
-            // אם המשתמש נמצא, ממפים את האובייקט למודל של BL ומחזירים אותו
             return new BLUser
             {
                 UserId = userFromDal.UserId,

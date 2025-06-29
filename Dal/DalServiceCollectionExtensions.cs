@@ -1,5 +1,4 @@
-﻿// filepath: Dal/ServiceCollectionExtensions.cs
-
+﻿
 using Dal.Api;
 using Dal.Models;
 using Dal.Services;

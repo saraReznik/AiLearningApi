@@ -21,13 +21,6 @@ namespace Server.Controllers
         [HttpGet("byCategory/{id}")]
         public ActionResult<List<BLSubCategory>> GetAllByCategory(int id)
         {
-            // =================================================================
-            //                      ניסוי לניפוי שגיאות
-            // =================================================================
-            // אנחנו מתעלמים כרגע מהקריאה לשירות ומחזירים רשימה מזויפת.
-            // אם זה יעבוד, נדע שהבעיה היא בפונקציה: _subcategoryService.GetAllByCategory(id)
-            // אם זה עדיין ייכשל עם שגיאת 400, נדע שהבעיה היא בהגדרות השרת.
-            // =================================================================
 
             var fakeList = new List<BLSubCategory>
             {
@@ -37,8 +30,6 @@ namespace Server.Controllers
 
             return Ok(fakeList);
         }
-
-        // ------- שאר הפונקציות נשארות כפי שהן -------
 
         [HttpGet]
         public ActionResult<List<BLSubCategory>> GetAll()

@@ -12,19 +12,19 @@ namespace BL.Models
     public class BLUser
     {
         [Required]
-        [Key] // מציין שמדובר במפתח ראשי
+        [Key] 
        
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Name is required.")] // חובה עם הודעת שגיאה
-        [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")] // אורך מקסימלי
+        [Required(ErrorMessage = "Name is required.")] 
+        [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")]
         public string Name { get; set; } = null!;
 
-        [Phone(ErrorMessage = "Invalid phone number format.")] // בדיקת פורמט טלפון
+        [Phone(ErrorMessage = "Invalid phone number format.")] 
         public string? Phone { get; set; }
 
-        [Required(ErrorMessage = "Email is required.")] // חובה עם הודעת שגיאה
-        [EmailAddress(ErrorMessage = "Invalid email address format.")] // בדיקת פורמט אימייל
+        [Required(ErrorMessage = "Email is required.")] 
+        [EmailAddress(ErrorMessage = "Invalid email address format.")] 
         public string Email { get; set; } = null!;
 
         public string? Role { get; set; }

@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.Json.Serialization; 
 using System.Text.Unicode;
 
 public class Startup
@@ -33,7 +34,7 @@ public class Startup
         services.AddControllers()
             .AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
 
         var jwtSection = Configuration.GetSection("Jwt");
@@ -93,19 +94,15 @@ public class Startup
             });
         });
 
-        // ======================================================================
-        //                              התיקון כאן
-        // ======================================================================
-        // הוספנו פוליסה מאוד פתוחה רק לצורך בדיקה, כדי לראות אם זה פותר את הבעיה
-        // אם זה עובד, נדע שהבעיה היא באופן שבו השרת מזהה את הכתובת הספציפית
-        // ======================================================================
+
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAllOriginsForTesting",
-                builder => builder.AllowAnyOrigin() // שינוי מרכזי: מאפשר גישה מכל מקור
+                builder => builder.AllowAnyOrigin()
                                   .AllowAnyMethod()
                                   .AllowAnyHeader());
         });
+
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -118,14 +115,8 @@ public class Startup
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "AI Driven Learning API v1"));
         }
 
-        //app.UseHttpsRedirection();
         app.UseRouting();
 
-        // ======================================================================
-        //                              התיקון כאן
-        // ======================================================================
-        // השתמשנו בשם הפוליסה החדשה שיצרנו לצורך הבדיקה
-        // ======================================================================
         app.UseCors("AllowAllOriginsForTesting");
 
         app.UseAuthentication();

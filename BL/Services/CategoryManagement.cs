@@ -17,12 +17,6 @@ namespace BL.Services
             _category = dal.Category;
         }
 
-        // =================================================================
-        //                         התיקון הקריטי כאן
-        // =================================================================
-        // שברנו את המעגליות על ידי כך שהפונקציה מחזירה רק את המידע
-        // הדרוש עבור רשימת הקטגוריות, בלי לנסות לטעון את תתי-הקטגוריות
-        // שגרמו ללולאה האינסופית בזמן ההמרה ל-JSON.
         public IEnumerable<BLCategory> GetAll()
         {
             return _category.GetAll().Select(c => new BLCategory
@@ -30,10 +24,8 @@ namespace BL.Services
                 CategoryId = c.CategoryId,
                 Name = c.Name,
                 Description = c.Description
-                // אנחנו לא כוללים את SubCategories בכוונה כדי למנוע את המעגליות
             });
         }
-        // =================================================================
 
         public BLCategory Create(BLCategory entity)
         {

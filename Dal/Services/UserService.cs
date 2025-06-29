@@ -18,10 +18,7 @@ namespace Dal.Services
         }
         public User Create(User entity)
         {
-            // [התיקון הכירורגי]:
-            // במקום להוסיף את האובייקט ישירות, אנחנו קודם כל משנים את המצב שלו.
-            // השורה הבאה אומרת במפורש ל-Entity Framework שמדובר באובייקט חדש לחלוטין,
-            // ושהוא צריך להתעלם מה-ID הנוכחי (שהוא 0) ולתת למסד הנתונים ליצור ID חדש.
+
             _context.Entry(entity).State = EntityState.Added;
 
             try
@@ -30,7 +27,6 @@ namespace Dal.Services
             }
             catch (DbUpdateException ex)
             {
-                // כאן אפשר להוסיף לוג מפורט יותר אם רוצים
                 throw new Exception("Error creating the user.", ex);
             }
 
